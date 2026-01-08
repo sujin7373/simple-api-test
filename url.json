@@ -1,0 +1,6 @@
+[
+    {
+        "JSON_HOLDER" : "https://jsonplaceholder.typicode.com",
+        "MySQL_URL" : "http://localhost:4444"
+    }
+]

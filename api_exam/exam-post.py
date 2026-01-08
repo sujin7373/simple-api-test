@@ -1,12 +1,17 @@
 import requests
+import json
+
+with open("url.json", "r", encoding="utf-8") as f :
+    url_list = json.load(f)
+base_url = url_list[0]["JSON_HOLDER"]
 
 # 요청할 URL
-url = "https://jsonplaceholder.typicode.com/posts"
+url = f"{base_url}/posts"
 
 # 서버로 보낼 데이터 (payload)
 payload = {
-    "title": "foo",
-    "body": "bar",
+    "title": "classic",
+    "body": "fly me to the moon",
     "userId": 1
 }
 

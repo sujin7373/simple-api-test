@@ -1,8 +1,13 @@
 import requests
+import json
+
+with open("url.json", "r", encoding="utf-8") as f:
+    url_list = json.load(f)
+base_url = url_list[0]["JSON_HOLDER"]
 
 # 요청할 기본 URL
 # 아직 ?userId=1 같은 건 안 붙어 있음
-url = "https://jsonplaceholder.typicode.com/comments"
+url = f"{base_url}/comments"
 
 # Query Parameter를 dict 형태로 정의
 # key=value → userId=1
@@ -15,7 +20,7 @@ params = {
 response = requests.get(url, params=params)
 
 # 실제 요청된 URL 확인
-# https://jsonplaceholder.typicode.com/posts?userId=1
+# https://jsonplaceholder.typicode.com/comments?postId=1
 print(response.url)
 
 # 응답 상태 코드 확인 (정상: 200)

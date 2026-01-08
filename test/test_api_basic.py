@@ -2,6 +2,7 @@
 # pytest + requests 를 이용한 가장 기본적인 API 테스트 예제
 
 import requests
+import json
 
 def test_get_post_by_id():
     """
@@ -11,10 +12,13 @@ def test_get_post_by_id():
     - 응답 내용이 우리가 기대한 형태인지
     를 검증한다
     """
-
+    with open("url.json", "r", encoding="utf-8") as f:
+        url_list = json.load(f)
+    base_url = url_list[0]["JSON_HOLDER"]
+    
     # 1️⃣ 테스트할 API 주소
     # posts/1 → id가 1인 게시글 조회
-    url = "https://jsonplaceholder.typicode.com/posts/1"
+    url = f"{base_url}/posts/1"
 
     # 2️⃣ 서버에 GET 요청 보내기
     response = requests.get(url)

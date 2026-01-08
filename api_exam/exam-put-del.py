@@ -1,15 +1,20 @@
 import requests
+import json
+
+with open("url.json", "r", encoding="utf-8") as f:
+    url_list = json.load(f)
+base_url = url_list[0]["JSON_HOLDER"]
 
 # ------------------------------
 # PUT (게시글 ID 1 업데이트)
 # ------------------------------
-put_url = "https://jsonplaceholder.typicode.com/posts/1"
+put_url = f"{base_url}/posts/1"
 
 update_data = {
     "id": 1,
     "userId": 1,
-    "title": "간단하게 수정된 제목",
-    "body": "간단하게 수정된 내용"
+    "title": "chet baker",
+    "body": "I'm a fool to want you"
 }
 
 # PUT 요청
@@ -24,7 +29,7 @@ print(
 # ------------------------------
 # DELETE (게시글 ID 1 삭제)
 # ------------------------------
-delete_url = "https://jsonplaceholder.typicode.com/posts/1"
+delete_url = f"{base_url}/posts/1"
 
 # DELETE 요청
 delete_response = requests.delete(delete_url)

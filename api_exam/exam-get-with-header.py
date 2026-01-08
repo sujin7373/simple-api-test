@@ -1,7 +1,13 @@
 import requests
+import json
+
+with open("url.json", "r", encoding="utf-8") as f:
+    url_list = json.load(f)
+base_url = url_list[0]["JSON_HOLDER"]
+
 # TODO :: 나중에 여기서 플라스크 API 로컬 백엔드 주소로 바꿔서 테스트 ㄱㄱ~~
 # 요청할 URL
-url = "https://jsonplaceholder.typicode.com/posts/1"
+url = f"{base_url}/posts/1"
 
 # 요청 헤더 정의 (dict 형태)
 headers = {
